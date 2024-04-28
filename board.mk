@@ -1,4 +1,5 @@
 BOARDCPPSRC =  $(BOARD_DIR)/board_configuration.cpp \
+  $(BOARD_DIR)/board_storage.cpp \
     $(BOARD_DIR)/default_tune.cpp \
 
 
@@ -14,3 +15,9 @@ DDEFS += -DRAM_UNUSED_SIZE=100
 # good old PD14 is still the default value
 # todo https://github.com/rusefi/fw-custom-mega/issues/1
 # DDEFS += -DLED_CRITICAL_ERROR_BRAIN_PIN=Gpio::I15
+
+
+# USE_OPT += -Wl,--defsym=FLASH_SIZE=768k
+
+#Serial flash support
+#include $(PROJECT_DIR)/hw_layer/drivers/flash/sst26f_jedec.mk
