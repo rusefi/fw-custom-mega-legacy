@@ -12,4 +12,5 @@ DDEFS += -DRAM_UNUSED_SIZE=100
 
 # assign critical LED to a non-existent pin if you do not have it on your board
 # good old PD14 is still the default value
+# todo https://github.com/rusefi/fw-custom-mega/issues/1
 # DDEFS += -DLED_CRITICAL_ERROR_BRAIN_PIN=Gpio::I15

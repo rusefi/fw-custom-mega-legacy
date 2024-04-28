@@ -1,6 +1,7 @@
 #include "pch.h"
 
 Gpio getCommsLedPin() {
+    // TODO: https://github.com/rusefi/fw-custom-mega/issues/1
 	return Gpio::Unassigned;
 }
 
