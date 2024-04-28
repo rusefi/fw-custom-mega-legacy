@@ -13,6 +13,16 @@ Gpio getWarningLedPin() {
 	return Gpio::Unassigned;
 }
 
+static void setSdCardSpi3() {
+    engineConfiguration->isSdCardEnabled = true;
+	engineConfiguration->sdCardSpiDevice = SPI_DEVICE_3;
+	engineConfiguration->spi3mosiPin = Gpio::C12;
+	engineConfiguration->spi3misoPin = Gpio::C11;
+	engineConfiguration->spi3sckPin = Gpio::C10;
+	engineConfiguration->is_enabled_spi_3 = true;
+	engineConfiguration->sdCardCsPin = Gpio::D2;
+}
+
 // board-specific configuration setup
 void setBoardDefaultConfiguration() {
 	// Battery sense on PA2
@@ -29,6 +39,8 @@ void setBoardDefaultConfiguration() {
 
 //	engineConfiguration->adcVcc = 3.3f;
 
+
+	setSdCardSpi3();
 
     // engineConfiguration->injectionPins[0] = Gpio::F13;
     // engineConfiguration->ignitionPins[0] = Gpio::E15;
