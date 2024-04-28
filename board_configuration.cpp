@@ -14,6 +14,21 @@ Gpio getWarningLedPin() {
 
 // board-specific configuration setup
 void setBoardDefaultConfiguration() {
+	// Battery sense on PA2
+	engineConfiguration->vbattAdcChannel = EFI_ADC_2;
+
+	// all analog inputs have same divider on-board, we assume additional divider for vbatt on carrier board
+	    	// 6.34k high side/ 1k low side
+    //    	engineConfiguration->vbattDividerCoeff = (6.34 + 1) / 1;
+
+    // same 470 and 910 on all analog inputs
+    	// 5.6k high side/10k low side = 1.56 ratio divider
+  //  	engineConfiguration->analogInputDividerCoefficient = 1.56f;
+
+
+//	engineConfiguration->adcVcc = 3.3f;
+
+
     // engineConfiguration->injectionPins[0] = Gpio::F13;
     // engineConfiguration->ignitionPins[0] = Gpio::E15;
 
@@ -27,18 +42,9 @@ void setBoardDefaultConfiguration() {
 //	engineConfiguration->iat.adcChannel = EFI_ADC_2;
 
 
-    	// 5.6k high side/10k low side = 1.56 ratio divider
-  //  	engineConfiguration->analogInputDividerCoefficient = 1.56f;
-
-    	// 6.34k high side/ 1k low side
-//    	engineConfiguration->vbattDividerCoeff = (6.34 + 1) / 1;
-
-//	engineConfiguration->adcVcc = 3.3f;
 
 //	engineConfiguration->clt.config.bias_resistor = 2490;
 //	engineConfiguration->iat.config.bias_resistor = 2490;
 
 
-	// Battery sense on PA0
-//	engineConfiguration->vbattAdcChannel = EFI_ADC_0;
 }
