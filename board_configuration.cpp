@@ -33,12 +33,8 @@ void setBoardDefaultConfiguration() {
     //    	engineConfiguration->vbattDividerCoeff = (6.34 + 1) / 1;
 
     // same 470 and 910 on all analog inputs
-    	// 5.6k high side/10k low side = 1.56 ratio divider
-  //  	engineConfiguration->analogInputDividerCoefficient = 1.56f;
-
-
-//	engineConfiguration->adcVcc = 3.3f;
-
+   	engineConfiguration->analogInputDividerCoefficient = 1.55f;
+	engineConfiguration->adcVcc = 3.3f;
 
 	setSdCardSpi3();
 
