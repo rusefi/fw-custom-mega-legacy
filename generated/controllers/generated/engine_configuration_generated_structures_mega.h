@@ -1,4 +1,4 @@
-// this section was generated automatically by rusEFI tool config_definition-all.jar based on (unknown script) integration/rusefi_config.txt Wed May 01 16:41:32 UTC 2024
+// this section was generated automatically by rusEFI tool config_definition-all.jar based on (unknown script) integration/rusefi_config.txt Wed May 08 16:42:23 UTC 2024
 // by class com.rusefi.output.CHeaderConsumer
 // begin
 #pragma once
@@ -934,9 +934,8 @@ struct engine_configuration_s {
 	 */
 	int hip9011PrescalerAndSDO;
 	/**
-	 * We calculate knock band based of cylinderBore
-	 *  Use this to override - kHz knock band override
-	 * Requires power cycling to effect
+	 * Use any online calculator and input your bore.
+	 * Reminder that in some cases double frequency works better!
 	 * units: kHz
 	 * offset 428
 	 */
@@ -2495,6 +2494,7 @@ struct engine_configuration_s {
 	offset 1316 bit 14 */
 	bool twoWireBatchIgnition : 1 {};
 	/**
+	 * Read MAP sensor on ECU start-up to use as baro value.
 	offset 1316 bit 15 */
 	bool useFixedBaroCorrFromMap : 1 {};
 	/**
@@ -4801,7 +4801,7 @@ struct persistent_config_s {
 	/**
 	 * offset 5332
 	 */
-	uint8_t fancyOptions[FANCY_OPTIONS_COUNT];
+	uint8_t unusedGapHere[16];
 	/**
 	 * offset 5348
 	 */
@@ -5282,17 +5282,17 @@ struct persistent_config_s {
 	 * units: deg
 	 * offset 19172
 	 */
-	scaled_channel<uint8_t, 4, 1> maxKnockRetardTable[6][6];
+	scaled_channel<uint8_t, 4, 1> maxKnockRetardTable[KNOCK_TABLE_SIZE][KNOCK_TABLE_SIZE];
 	/**
 	 * units: %
 	 * offset 19208
 	 */
-	uint8_t maxKnockRetardLoadBins[6];
+	uint8_t maxKnockRetardLoadBins[KNOCK_TABLE_SIZE];
 	/**
 	 * units: RPM
 	 * offset 19214
 	 */
-	scaled_channel<uint8_t, 1, 100> maxKnockRetardRpmBins[6];
+	scaled_channel<uint8_t, 1, 100> maxKnockRetardRpmBins[KNOCK_TABLE_SIZE];
 	/**
 	 * units: deg
 	 * offset 19220
@@ -5619,4 +5619,4 @@ struct persistent_config_s {
 static_assert(sizeof(persistent_config_s) == 22656);
 
 // end
-// this section was generated automatically by rusEFI tool config_definition-all.jar based on (unknown script) integration/rusefi_config.txt Wed May 01 16:41:32 UTC 2024
+// this section was generated automatically by rusEFI tool config_definition-all.jar based on (unknown script) integration/rusefi_config.txt Wed May 08 16:42:23 UTC 2024
